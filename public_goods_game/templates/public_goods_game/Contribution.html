@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Contribution
+{% endblock %}
+
+{% block content %}
+    <h5> You are now in round {{ player.round_number }}/{{ Constants.num_rounds }}</h5>
+    <h5> You can contribute up to {{ player.endowment }}</h5>
+{% formfield player.individual_contribution label=mylabel %}
+    {% next_button %}
+{% endblock %}
+
+

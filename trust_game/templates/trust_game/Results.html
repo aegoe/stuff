@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+    {% if player.role == "trustor" %}
+    In this game, you played as a trustor. Your earned
+        <div class="alert alert-danger">
+    {{ player.payoff }}
+    {%  endif%}
+
+        {% if player.role == "trustee" %}
+    In this game, you played as a trustee. Your earned
+        <div class="alert alert-danger">
+    {{ player.payoff }}
+    {%  endif%}
+
+    {% next_button %}
+{% endblock %}
+
+

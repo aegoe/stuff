@@ -1,0 +1,44 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+<h5>Your information:</h5>
+<table>
+<tr>
+    <td> Your age: </td>
+    <td> {{player.age}} </td>
+    </tr>
+    <tr>
+        <td>Your gender:</td>
+        <td>{{player.get_gender_display}}</td>
+
+    </tr>
+       <tr>
+        <td>Your income:</td>
+        <td>{{player.get_income_display}}</td>
+
+    </tr>
+       <tr>
+        <td>Years till retirement:</td>
+        <td>{{player.get_years_till_retirement }}</td>
+
+    </tr>
+</table>
+    {%  for other in player.get_others_in_group %}
+        {%  if other.reveal_info %}
+        <div>{{other.age}}</div>
+        <div>{{other.gender}}</div>
+        <div>{{other.get_years_till_retirement}}</div>
+        {%  endif %}
+
+    {% endfor %}
+
+
+    {% next_button %}
+{% endblock %}
+
+

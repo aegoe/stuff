@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Results
+{% endblock %}
+
+    {% block content %}
+    <div> Your endowment is {{ player.endowment }}</div>
+
+    <div> Your contribution was {{ player.individual_contribution }}</div>
+
+    <div> Your share is {{ group.individual_share }}</div>
+
+    <div> Your payoff is {{ player.payoff }}</div>
+
+    <div> Your aggregated payoff so far is {{ participant.payoff }}</div>
+
+    {% next_button %}
+
+{%  if player.round_number > 1 %}
+
+        <h5> Your contribution in previous rounds:</h5>
+        {%  for p in player.in_previous_rounds %}
+        <div> In round {{ p.round_number }} your contribution was {{ p.individual_contribution }}</div>
+            And your group average contribution in this round was: {{ p.group.average_contribution }}
+        {%  endfor %}
+
+        {% endif %}
+
+        <h5> Other group members:</h5>
+
+        {% for other in player.get_others_in_group %}
+            <div> Player {{other.id_in_group }}: Contribution: {{ other.individual_contribution }}; Payoff: {{ other.payoff }} </div>
+        {%  endfor %}
+{% endblock %}
+
+

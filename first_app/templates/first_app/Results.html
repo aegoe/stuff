@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Page title
+{% endblock %}
+
+{% block content %}
+<div class="alert alert-info">Your age is: {{player.age}}</div>
+<div class="alert alert-info">Your gender is: {{player.gender}}</div>
+
+        {% next_button %}
+{% endblock %}
+
+
